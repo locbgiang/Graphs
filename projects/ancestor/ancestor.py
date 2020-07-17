@@ -8,23 +8,21 @@ def earliest_ancestor(ancestors, starting_node):
     for a in ancestors:                  # add edge
         g.add_edge(a[1],a[0])
 
-    dft = g.dft(starting_node)           
-    if len(dft) == 1:                   # if starting node has no ancestor
+    parents = g.dft(starting_node)        
+    if len(parents) == 1:                   # if starting node has no ancestor
         return -1                       # return 1
 
     paths = []               
-    for end in dft:                                 # find all path from starting node
-        paths.append(g.dfs(starting_node,end))
-    #print('path is ', paths)
+    for end in parents:                                 # find all path from starting node
+        paths.append(g.dfs(starting_node, end))
+
 
     longestpath = 0
     longestlength = 0
     for i in range(len(paths)):                     # find longest path
         if len(paths[i]) > longestlength:
             longestpath = paths[i]
-
             longestlength = len(paths[i])
-    print(longestpath[-1])
     return longestpath[-1]                             # return the final node from longest
 
 

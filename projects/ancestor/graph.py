@@ -63,7 +63,6 @@ class Graph:
             if v not in visited:
                 result.append(v)
                 visited.add(v)
-                print(f'{v}')
                 for next_vert in self.get_neighbors(v):
                     s.push(next_vert)
         return (result)
