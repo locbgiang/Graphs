@@ -57,16 +57,15 @@ class Graph:
 
         visited = set()
         s.push(starting_vertex)
-
+        result = []
         while s.size() > 0:
             v = s.pop()
             if v not in visited:
+                result.append(v)
                 visited.add(v)
-                print(f'{v}')
                 for next_vert in self.get_neighbors(v):
                     s.push(next_vert)
-        
-
+        return (result)
     def dft_recursive(self, v, visited = None):
         """
         Print each vertex in depth-first order
